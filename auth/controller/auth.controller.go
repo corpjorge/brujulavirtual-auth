@@ -12,6 +12,15 @@ type Controller struct {
 }
 
 func (c *Controller) Create(w http.ResponseWriter, r *http.Request) {
+	switch r.Method {
+	case "POST":
+		c.CreatePost(w, r)
+	default:
+		http.Error(w, "", http.StatusMethodNotAllowed)
+	}
+}
+
+func (c *Controller) CreatePost(w http.ResponseWriter, r *http.Request) {
 
 	var auth models.Auth
 
