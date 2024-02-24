@@ -34,7 +34,10 @@ func (c *Controller) Create(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
-	json.NewEncoder(w).Encode(createdAuth)
+	err = json.NewEncoder(w).Encode(createdAuth)
+	if err != nil {
+		return
+	}
 
 }
 
