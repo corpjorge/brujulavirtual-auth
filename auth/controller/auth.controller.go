@@ -11,6 +11,10 @@ type Controller struct {
 	service service.Service
 }
 
+type ErrorResponse struct {
+	Error string `json:"error"`
+}
+
 func (c *Controller) Create(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "POST":
@@ -26,7 +30,15 @@ func (c *Controller) CreatePost(w http.ResponseWriter, r *http.Request) {
 
 	err := json.NewDecoder(r.Body).Decode(&auth)
 	if err != nil {
-		http.Error(w, "Error processing data", http.StatusBadRequest)
+		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusBadRequest)
+		errorResponse := ErrorResponse{
+			Error: "Error processing data",
+		}
+		err := json.NewEncoder(w).Encode(errorResponse)
+		if err != nil {
+			return
+		}
 		return
 	}
 
@@ -37,7 +49,7 @@ func (c *Controller) CreatePost(w http.ResponseWriter, r *http.Request) {
 
 	createdAuth, err := c.service.Create(auth)
 	if err != nil {
-		http.Error(w, "Error al crear la entidad de autenticación", http.StatusInternalServerError)
+		http.Error(w, "Error creating authenticator entity", http.StatusInternalServerError)
 		return
 	}
 
