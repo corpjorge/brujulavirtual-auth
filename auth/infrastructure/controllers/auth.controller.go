@@ -1,18 +1,22 @@
-package controller
+package controllers
 
 import (
-	"brujulavirtual-auth/auth/models"
-	"brujulavirtual-auth/auth/service"
+	"brujulavirtual-auth/auth/domain/models"
+	"brujulavirtual-auth/auth/domain/ports"
 	"encoding/json"
 	"net/http"
 )
 
 type Controller struct {
-	service service.Service
+	service ports.Service
 }
 
 type ErrorResponse struct {
 	Error string `json:"error"`
+}
+
+func AuthController(service ports.Service) *Controller {
+	return &Controller{service: service}
 }
 
 func (c *Controller) Create(w http.ResponseWriter, r *http.Request) {
@@ -60,8 +64,4 @@ func (c *Controller) CreatePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-}
-
-func AuthController(service service.Service) *Controller {
-	return &Controller{service: service}
 }

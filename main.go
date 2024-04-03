@@ -1,7 +1,7 @@
 package main
 
 import (
-	"brujulavirtual-auth/auth/config"
+	"brujulavirtual-auth/auth"
 	"fmt"
 	"net/http"
 )
@@ -9,7 +9,7 @@ import (
 func main() {
 	mux := http.NewServeMux()
 
-	config.AuthModule(mux)
+	auth.AuthModule(mux)
 
 	fmt.Println("The server is listening on the port http://localhost:8080")
 	if err := http.ListenAndServe(":8080", mux); err != nil {
