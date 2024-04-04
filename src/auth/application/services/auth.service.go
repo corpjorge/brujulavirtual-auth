@@ -2,14 +2,14 @@ package services
 
 import (
 	"brujulavirtual-auth/src/auth/domain/models"
-	ports2 "brujulavirtual-auth/src/auth/domain/ports"
+	"brujulavirtual-auth/src/auth/domain/ports"
 )
 
 type Impl struct {
-	repo ports2.Repository
+	repo ports.Repository
 }
 
-func AuthService(repo ports2.Repository) ports2.Service {
+func AuthService(repo ports.Repository) ports.Service {
 	return &Impl{repo}
 }
 
