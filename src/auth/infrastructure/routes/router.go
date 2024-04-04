@@ -1,7 +1,7 @@
 package routes
 
 import (
-	"brujulavirtual-auth/auth/infrastructure/controllers"
+	"brujulavirtual-auth/src/auth/infrastructure/controllers"
 	"net/http"
 )
 

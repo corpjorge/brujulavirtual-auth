@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"brujulavirtual-auth/auth/domain/models"
-	"brujulavirtual-auth/auth/domain/ports"
+	"brujulavirtual-auth/src/auth/domain/models"
+	"brujulavirtual-auth/src/auth/domain/ports"
 	"encoding/json"
 	"net/http"
 )

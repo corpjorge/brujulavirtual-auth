@@ -1,10 +1,10 @@
 package auth
 
 import (
-	"brujulavirtual-auth/auth/application/services"
-	"brujulavirtual-auth/auth/infrastructure/controllers"
-	"brujulavirtual-auth/auth/infrastructure/repositories"
-	"brujulavirtual-auth/auth/infrastructure/routes"
+	"brujulavirtual-auth/src/auth/application/services"
+	"brujulavirtual-auth/src/auth/infrastructure/controllers"
+	"brujulavirtual-auth/src/auth/infrastructure/repositories"
+	"brujulavirtual-auth/src/auth/infrastructure/routes"
 	"net/http"
 )
 

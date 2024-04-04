@@ -1,7 +1,7 @@
 package ports
 
 import (
-	"brujulavirtual-auth/auth/domain/models"
+	"brujulavirtual-auth/src/auth/domain/models"
 )
 
 type Repository interface {

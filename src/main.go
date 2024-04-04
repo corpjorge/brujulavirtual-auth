@@ -1,7 +1,7 @@
 package main
 
 import (
-	"brujulavirtual-auth/auth"
+	"brujulavirtual-auth/src/auth"
 	"fmt"
 	"net/http"
 )

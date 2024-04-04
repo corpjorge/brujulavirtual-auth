@@ -1,8 +1,8 @@
 package repositories
 
 import (
-	"brujulavirtual-auth/auth/domain/models"
-	"brujulavirtual-auth/auth/domain/ports"
+	"brujulavirtual-auth/src/auth/domain/models"
+	"brujulavirtual-auth/src/auth/domain/ports"
 	"context"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
