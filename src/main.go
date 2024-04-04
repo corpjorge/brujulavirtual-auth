@@ -9,10 +9,10 @@ import (
 )
 
 func main() {
+	err := godotenv.Load()
 	mux := http.NewServeMux()
 	App(mux)
 
-	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}

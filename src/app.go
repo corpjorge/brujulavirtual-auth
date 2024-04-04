@@ -6,5 +6,5 @@ import (
 )
 
 func App(mux *http.ServeMux) {
-	auth.AuthModule(mux)
+	auth.Module(mux)
 }

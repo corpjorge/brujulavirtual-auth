@@ -17,7 +17,7 @@ func Setup() *controllers.Controller {
 
 }
 
-func AuthModule(mux *http.ServeMux) {
+func Module(mux *http.ServeMux) {
 	authController := Setup()
 	routes.Router(*authController, mux)
 }
