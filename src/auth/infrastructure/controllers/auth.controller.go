@@ -51,7 +51,7 @@ func (c *Controller) CreatePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	createdAuth, err := c.service.Create(auth)
+	createdAuth, err := c.service.Validate(auth)
 	if err != nil {
 		http.Error(w, "Error creating authenticator entity", http.StatusInternalServerError)
 		return

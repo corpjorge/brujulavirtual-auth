@@ -5,5 +5,6 @@ import (
 )
 
 type Service interface {
-	Create(auth models.Auth) (models.Auth, error)
+	Validate(auth models.Auth) (models.Auth, error)
+	GenerateToken(auth models.Auth) (string, error)
 }

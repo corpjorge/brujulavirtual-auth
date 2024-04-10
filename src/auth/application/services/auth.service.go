@@ -13,10 +13,14 @@ func AuthService(repo ports.Repository) ports.Service {
 	return &Impl{repo}
 }
 
-func (i *Impl) Create(auth models.Auth) (models.Auth, error) {
-	_, err := i.repo.Create(auth)
+func (i *Impl) Validate(auth models.Auth) (models.Auth, error) {
+	_, err := i.repo.Validate(auth)
 	if err != nil {
 		return models.Auth{}, err
 	}
 	return auth, nil
+}
+
+func (i *Impl) GenerateToken(auth models.Auth) (string, error) {
+	panic("implement me")
 }
