@@ -13,20 +13,20 @@ type Controller struct {
 	service ports.Service
 }
 
-func AuthController(service ports.Service) *Controller {
+func Auth(service ports.Service) *Controller {
 	return &Controller{service: service}
 }
 
-func (c *Controller) Validate(w http.ResponseWriter, r *http.Request) {
+func (controller *Controller) Validate(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "POST":
-		c.ValidatePost(w, r)
+		controller.ValidatePost(w, r)
 	default:
 		http.Error(w, "", http.StatusMethodNotAllowed)
 	}
 }
 
-func (c *Controller) ValidatePost(w http.ResponseWriter, r *http.Request) {
+func (controller *Controller) ValidatePost(w http.ResponseWriter, r *http.Request) {
 
 	var auth models.Auth
 	err := json.NewDecoder(r.Body).Decode(&auth)
@@ -41,7 +41,7 @@ func (c *Controller) ValidatePost(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	createdAuth, err := c.service.Validate(auth)
+	createdAuth, err := controller.service.Validate(auth)
 	if err != nil {
 		commons.ErrorResponse(w, "Error creating authenticator entity", http.StatusInternalServerError)
 		return

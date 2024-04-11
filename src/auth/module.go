@@ -11,7 +11,7 @@ import (
 func Module(mux *http.ServeMux) {
 	authRepository := repositories.AuthRepository()
 	authService := services.AuthService(authRepository)
-	authController := controllers.AuthController(authService)
+	authController := controllers.Auth(authService)
 
 	routes.Router(*authController, mux)
 }
