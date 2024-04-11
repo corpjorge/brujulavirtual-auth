@@ -19,16 +19,16 @@ func AuthController(service ports.Service) *Controller {
 	return &Controller{service: service}
 }
 
-func (c *Controller) Create(w http.ResponseWriter, r *http.Request) {
+func (c *Controller) Validate(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "POST":
-		c.CreatePost(w, r)
+		c.ValidatePost(w, r)
 	default:
 		http.Error(w, "", http.StatusMethodNotAllowed)
 	}
 }
 
-func (c *Controller) CreatePost(w http.ResponseWriter, r *http.Request) {
+func (c *Controller) ValidatePost(w http.ResponseWriter, r *http.Request) {
 
 	var auth models.Auth
 
