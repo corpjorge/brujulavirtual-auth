@@ -8,16 +8,10 @@ import (
 	"net/http"
 )
 
-func Setup() *controllers.Controller {
+func Module(mux *http.ServeMux) {
 	authRepository := repositories.AuthRepository()
 	authService := services.AuthService(authRepository)
 	authController := controllers.AuthController(authService)
 
-	return authController
-
-}
-
-func Module(mux *http.ServeMux) {
-	authController := Setup()
 	routes.Router(*authController, mux)
 }
