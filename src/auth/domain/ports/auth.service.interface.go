@@ -4,6 +4,6 @@ import (
 	"brujulavirtual-auth/src/auth/domain/models"
 )
 
-type AuthService interface {
+type Service interface {
 	Validate(auth models.Auth) (models.Auth, error)
 }
