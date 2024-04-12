@@ -34,7 +34,6 @@ func (r *Mongo) Validate(auth models.Auth) (models.Auth, error) {
 	defer cancel()
 
 	filter := bson.M{"user": auth.User, "password": auth.Password}
-	log.Default().Printf("Searching for: %#v\n", filter)
 
 	var result models.Auth
 	err := r.collection.FindOne(ctx, filter).Decode(&result)
@@ -47,6 +46,5 @@ func (r *Mongo) Validate(auth models.Auth) (models.Auth, error) {
 		return models.Auth{}, err
 	}
 
-	log.Default().Printf("Found document: %#v\n", result)
 	return result, nil
 }
