@@ -9,7 +9,7 @@ import (
 )
 
 func Module(mux *http.ServeMux) {
-	authRepository := repositories.AuthRepository()
+	authRepository := repositories.Auth()
 	authService := ports.Service(authRepository)
 	authController := controllers.Auth(authService)
 
