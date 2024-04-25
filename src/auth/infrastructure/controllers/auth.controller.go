@@ -43,7 +43,7 @@ func (controller *Controller) ValidatePost(w http.ResponseWriter, r *http.Reques
 
 	createdAuth, err := controller.service.Validate(auth)
 	if err != nil {
-		commons.ErrorResponse(w, "Authentication Error", http.StatusInternalServerError)
+		commons.ErrorResponse(w, "Authentication Error", http.StatusBadRequest)
 		return
 	}
 
