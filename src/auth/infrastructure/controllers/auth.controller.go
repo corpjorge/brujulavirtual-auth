@@ -48,7 +48,7 @@ func (controller *Controller) ValidatePost(w http.ResponseWriter, r *http.Reques
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusCreated)
+	w.WriteHeader(http.StatusOK)
 	err = json.NewEncoder(w).Encode(createdAuth)
 	if err != nil {
 		log.Default().Printf("Error encoding the response: %v", err)
