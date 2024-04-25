@@ -33,7 +33,7 @@ func (r *Mongo) Validate(auth models.Auth) (models.Auth, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
-	filter := bson.M{"user": auth.User, "password": auth.Password}
+	filter := bson.M{"user": auth.User}
 
 	var result models.Auth
 	err := r.collection.FindOne(ctx, filter).Decode(&result)

@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"brujulavirtual-auth/src/auth/domain/ports"
+	"brujulavirtual-auth/src/auth/application/services"
 	"brujulavirtual-auth/src/auth/infrastructure/controllers"
 	"brujulavirtual-auth/src/auth/infrastructure/repositories"
 	"brujulavirtual-auth/src/auth/infrastructure/routes"
@@ -10,7 +10,7 @@ import (
 
 func Module(mux *http.ServeMux) {
 	authRepository := repositories.Auth()
-	authService := ports.Service(authRepository)
+	authService := services.Auth(authRepository)
 	authController := controllers.Auth(authService)
 
 	routes.Router(*authController, mux)

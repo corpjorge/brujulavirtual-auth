@@ -5,7 +5,6 @@ import (
 	"brujulavirtual-auth/src/auth/domain/ports"
 	"brujulavirtual-auth/src/commons"
 	"encoding/json"
-	"log"
 	"net/http"
 )
 
@@ -30,7 +29,7 @@ func (controller *Controller) ValidatePost(w http.ResponseWriter, r *http.Reques
 
 	var auth models.Auth
 	err := json.NewDecoder(r.Body).Decode(&auth)
-	log.Default().Println(auth)
+
 	if err != nil {
 		commons.ErrorResponse(w, "Error processing data", http.StatusBadRequest)
 		return
@@ -41,7 +40,7 @@ func (controller *Controller) ValidatePost(w http.ResponseWriter, r *http.Reques
 		return
 	}
 
-	createdAuth, err := controller.service.Validate(auth)
+	_, err = controller.service.Validate(auth)
 	if err != nil {
 		commons.ErrorResponse(w, "Authentication Error", http.StatusBadRequest)
 		return
@@ -49,9 +48,4 @@ func (controller *Controller) ValidatePost(w http.ResponseWriter, r *http.Reques
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
-	err = json.NewEncoder(w).Encode(createdAuth)
-	if err != nil {
-		log.Default().Printf("Error encoding the response: %v", err)
-	}
-
 }
