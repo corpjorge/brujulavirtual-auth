@@ -27,7 +27,6 @@ func (service *Service) Validate(auth models.Auth) (models.Auth, error) {
 
 	storedAuth, err := service.repository.Validate(auth)
 
-	log.Default().Println("Stored Auth: ", storedAuth)
 	if err != nil {
 		return models.Auth{}, err
 	}
