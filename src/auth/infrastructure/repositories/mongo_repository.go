@@ -35,6 +35,8 @@ func (r *Mongo) Validate(auth models.Auth) (models.Auth, error) {
 
 	filter := bson.M{"user": auth.User}
 
+	log.Default().Printf("MONGO DATA: %v\n", filter)
+
 	var result models.Auth
 	err := r.collection.FindOne(ctx, filter).Decode(&result)
 	if err != nil {
