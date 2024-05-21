@@ -3,7 +3,7 @@ package controllers
 import (
 	"brujulavirtual-auth/src/auth/domain/models"
 	"brujulavirtual-auth/src/auth/domain/ports"
-	"brujulavirtual-auth/src/commons"
+	"brujulavirtual-auth/src/common"
 	"encoding/json"
 	"net/http"
 )
@@ -31,18 +31,18 @@ func (controller *Controller) ValidatePost(w http.ResponseWriter, r *http.Reques
 	err := json.NewDecoder(r.Body).Decode(&auth)
 
 	if err != nil {
-		commons.ErrorResponse(w, "Error processing data", http.StatusBadRequest)
+		common.ErrorResponse(w, "Error processing data", http.StatusBadRequest)
 		return
 	}
 
 	if !auth.IsValid() {
-		commons.ErrorResponse(w, "Incomplete or invalid authentication data", http.StatusBadRequest)
+		common.ErrorResponse(w, "Incomplete or invalid authentication data", http.StatusBadRequest)
 		return
 	}
 
 	_, err = controller.service.Validate(auth)
 	if err != nil {
-		commons.ErrorResponse(w, "Authentication Error", http.StatusBadRequest)
+		common.ErrorResponse(w, "Authentication Error", http.StatusBadRequest)
 		return
 	}
 
