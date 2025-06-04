@@ -5,6 +5,6 @@ import (
 	"net/http"
 )
 
-func Router(auth controllers.Controller, mux *http.ServeMux) {
+func Router(auth *controllers.Controller, mux *http.ServeMux) {
 	mux.HandleFunc("/auth", auth.Validate)
 }
